@@ -1,32 +1,36 @@
 import { supabase } from "../supabaseClient.ts";
 
-Deno.serve(async () => {
+Deno.serve(async (req) => {
   try {
-    // const { name } = await req.json();
-    // const data = {
-    //   message: `Hello ${name}!`,
-    // };
+    const { method } = req;
+
+    if (method !== "POST") throw "Invalid Method";
+
+    const credentials = await req.json();
+    if (!credentials?.email || !credentials.password) {
+      return new Response(JSON.stringify({ error: "Missing Credentials" }), {
+        status: 400,
+      });
+    }
     const { data, error } = await supabase.auth.signInWithPassword({
-      email: "riserap92@gmail.com",
-      password: "Test1234",
+      email: credentials?.email,
+      password: credentials.password,
     });
 
     if (error) {
-      console.log("Error", error);
+      return new Response(JSON.stringify({ error: error.name }), {
+        status: 400,
+      });
     }
-
-    console.log("Data", data);
 
     return new Response(
       JSON.stringify(data),
       { headers: { "Content-Type": "application/json" } },
     );
   } catch (error) {
-    console.log("Algo paso", error);
-
     return new Response(
-      JSON.stringify(error),
-      { headers: { "Content-Type": "application/json" } },
+      JSON.stringify({ error: error }),
+      { headers: { "Content-Type": "application/json" }, status: 501 },
     );
   }
 });
