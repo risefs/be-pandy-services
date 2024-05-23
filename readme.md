@@ -5,3 +5,5 @@
 # create new function
 supabase functions new hello-world
 
+# deploy function
+supabase functions deploy hello-world

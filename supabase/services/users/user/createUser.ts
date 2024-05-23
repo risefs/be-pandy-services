@@ -1,16 +1,17 @@
+import { SUCCESSFUL_MESSAGE } from "../../../functions/_shared/constants.js";
 import { supabase } from "../../../functions/supabaseClient.ts";
-import { IUser } from "schemas/users/user/index.ts";
+import { ICreateUserResponse, IUser } from "schemas/users/user/index.ts";
 
-export const createUser = async (user: IUser) => {
+export const createUser = async (user: IUser): Promise<ICreateUserResponse> => {
   try {
-    const { data, error } = await supabase.from("users").insert(user);
+    const { error } = await supabase.from("users").insert(user);
 
     if (error) {
-      return { error };
+      return { message: null, error };
     }
 
-    return { data };
+    return { message: SUCCESSFUL_MESSAGE };
   } catch (error) {
-    return { error: error.message };
+    return { message: null, error: error.message };
   }
 };

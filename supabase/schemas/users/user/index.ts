@@ -1,3 +1,5 @@
+import { PostgrestError } from "https://esm.sh/v135/@supabase/supabase-js@2.43.1/dist/module/index.js";
+
 export interface IUserCredentials {
   email: string;
   password: string;
@@ -17,6 +19,12 @@ export interface IUser {
   lastname: string;
   address: IAddress;
   email: string;
-  create_at: Date;
+  uid?: string;
+  created_at: Date;
   updated_at: Date;
+}
+
+export interface ICreateUserResponse {
+  message: string | null;
+  error?: PostgrestError;
 }

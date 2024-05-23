@@ -1,16 +1,24 @@
 import { supabase } from "../../../functions/supabaseClient.ts";
 import { IUserCredentials } from "schemas/users/user/index.ts";
+import { ISignUpResponse } from "schemas/auth/index.ts";
 
-export const signUp = async ({ email, password }: IUserCredentials) => {
+export const signUp = async (
+  { email, password }: IUserCredentials,
+): Promise<ISignUpResponse> => {
   try {
-    const { data, error } = await supabase.auth.signUp({ email, password });
-
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
     if (error) {
-      return { error };
+      return { data: null, error };
     }
 
-    return { data };
+    return {
+      data,
+      error,
+    };
   } catch (error) {
-    return { error: error.message };
+    return { data: null, error: error.message };
   }
 };
