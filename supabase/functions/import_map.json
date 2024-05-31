@@ -1,6 +1,7 @@
 {
   "imports": {
     "userService/": "../services/users/",
-    "schemas/": "../schemas/"
+    "schemas/": "../schemas/",
+    "@shared/": "./_shared/"
   }
 }

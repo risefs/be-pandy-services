@@ -1,4 +1,4 @@
-import { PostgrestError } from "https://esm.sh/v135/@supabase/supabase-js@2.43.1/dist/module/index.js";
+import { PostgrestError } from "npm:@supabase/supabase-js";
 
 export interface IUserCredentials {
   email: string;

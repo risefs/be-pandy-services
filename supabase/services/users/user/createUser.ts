@@ -1,6 +1,6 @@
 import { SUCCESSFUL_MESSAGE } from "../../../functions/_shared/constants.js";
-import { supabase } from "../../../functions/supabaseClient.ts";
 import { ICreateUserResponse, IUser } from "schemas/users/user/index.ts";
+import { supabase } from "@shared/supabaseClient.ts";
 
 export const createUser = async (user: IUser): Promise<ICreateUserResponse> => {
   try {

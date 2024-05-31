@@ -1,4 +1,4 @@
-import { supabase } from "../supabaseClient.ts";
+import { supabase } from "../_shared/supabaseClient.ts";
 
 Deno.serve(async (req) => {
   try {

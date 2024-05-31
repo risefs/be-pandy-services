@@ -1,4 +1,4 @@
-import { supabaseAdmin } from "../../../functions/supabaseClient.ts";
+import { supabaseAdmin } from "@shared/supabaseClient.ts";
 
 export const rollbackUser = async (userId: string) => {
   try {

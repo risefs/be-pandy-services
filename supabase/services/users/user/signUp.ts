@@ -1,6 +1,6 @@
-import { supabase } from "../../../functions/supabaseClient.ts";
 import { IUserCredentials } from "schemas/users/user/index.ts";
 import { ISignUpResponse } from "schemas/auth/index.ts";
+import { supabase } from "@shared/supabaseClient.ts";
 
 export const signUp = async (
   { email, password }: IUserCredentials,

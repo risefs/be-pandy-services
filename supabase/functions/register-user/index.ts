@@ -1,7 +1,7 @@
 import { signUp } from "userService/index.ts";
-import { corsHeaders } from "../_shared/cors.ts";
 import { createUser } from "userService/user/createUser.ts";
 import { rollbackUser } from "userService/user/rollbackUser.ts";
+import { corsHeaders } from "@shared/cors.ts";
 
 Deno.serve(async (req) => {
   try {
