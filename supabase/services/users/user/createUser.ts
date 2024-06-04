@@ -1,10 +1,10 @@
-import { SUCCESSFUL_MESSAGE } from "../../../functions/_shared/constants.js";
 import { ICreateUserResponse, IUser } from "schemas/users/user/index.ts";
-import { supabase } from "@shared/supabaseClient.ts";
+import { supabaseAdmin } from "shared/supabaseClient.ts";
+import { SUCCESSFUL_MESSAGE } from "shared/constants.ts";
 
 export const createUser = async (user: IUser): Promise<ICreateUserResponse> => {
   try {
-    const { error } = await supabase.from("users").insert(user);
+    const { error } = await supabaseAdmin.from("users").insert(user);
 
     if (error) {
       return { message: null, error };

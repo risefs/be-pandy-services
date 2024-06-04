@@ -2,7 +2,8 @@
   "deno.enablePaths": [
     "supabase/functions",
     "supabase/services",
-    "supabase/schemas"
+    "supabase/schemas",
+    "supabase/shared"
   ],
   "deno.lint": true,
   "deno.unstable": true,
