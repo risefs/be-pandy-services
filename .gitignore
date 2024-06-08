@@ -1,0 +1,14 @@
+# Supabase
+.branches
+.temp
+.env
+.env.local
+
+#project
+node_modules/
+
+# Archivos de compilación
+*.js
+dist/
+dist/**
+dist/lib/*.js
